@@ -91,7 +91,7 @@
                         <a class="dokumen-btn" href="{{ asset('storage/' . $report->pdf) }}" target="_blank">Dokumen</a>
                         <br>
                     </div>
-                    <span>{{ $report->tentang }}</span>
+                    <span>{{ $report->judul }}</span>
 
                 </div>
 

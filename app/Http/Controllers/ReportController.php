@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Report;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 
 class ReportController extends Controller
@@ -24,49 +26,91 @@ class ReportController extends Controller
     // Store new report as pending
     public function store(Request $request)
     {
-        $request->validate([
-            'tipe_dokumen' => 'required',
-            'judul' => 'required',
-            'teu' => 'required',
-            'nomor' => 'required',
-            'tahun_terbit' => 'required',
-            'tempat_penetapan' => 'required',
-            'tanggal_penetapan' => 'required|date',
-            'tanggal_pengundangan' => 'required|date',
-            'subjek' => 'required',
-            'bahasa' => 'required',
-            'bidang_hukum' => 'required',
-            'penandatangan' => 'required',
-            'hasil_uji_materi' => 'required',
-            'pdf' => 'required|mimes:pdf|max:20480',
-        ]);
-        $pdfPath = $request->file('pdf')->store('pdfs', 'public');
-        $report = Report::create([
-            'user_id' => auth()->id(),
-            'tipe_dokumen' => $request->tipe_dokumen,
-            'judul' => $request->judul,
-            'tentang' => 'Tentang ' . $request->judul,
-            'teu' => $request->teu,
-            'nomor' => $request->nomor,
-            'tahun_terbit' => $request->tahun_terbit,
-            'tempat_penetapan' => $request->tempat_penetapan,
-            'tanggal_penetapan' => $request->tanggal_penetapan,
-            'tanggal_pengundangan' => $request->tanggal_pengundangan,
-            'subjek' => $request->subjek,
-            'sumber' => auth()->user()->name,
-            'status' => 'Menunggu',
-            'keterangan_status' => 'Menunggu Persetujuan',
-            'bahasa' => $request->bahasa,
-            'lokasi' => auth()->user()->name,
-            'bidang_hukum' => $request->bidang_hukum,
-            'penandatangan' => $request->penandatangan,
-            'hasil_uji_materi' => $request->hasil_uji_materi,
-            'pdf' => $pdfPath,
-            'jenis' => 'Keputusan Kepala OPD', // fixed value
-            'label' => 'Keputusan Kepala OPD Nomor ' . $request->nomor . ' Tahun ' . $request->tahun_terbit,
-            'status_verifikasi' => 'pending',
-        ]);
-        return redirect()->route('dashboard')->with('success', 'Dokumen berhasil diajukan dan menunggu persetujuan.');
+        // Log incoming request data for debugging
+        Log::info('Form submission data:', $request->all());
+
+        try {
+            $request->validate([
+                'tipe_dokumen' => 'required',
+                'kategori_produk_hukum' => 'required',
+                'bidang_hukum' => 'required',
+                'judul' => 'required',
+                'pdf' => 'required|mimes:pdf|max:20480',
+            ]);
+
+            // Handle file uploads
+            $pdfPath = $request->file('pdf')->store('pdfs', 'public');
+            $abstrakPath = null;
+            if ($request->hasFile('abstrak')) {
+                $abstrakPath = $request->file('abstrak')->store('abstraks', 'public');
+            }
+            // Remove dokumen_terkait file upload - this will be handled as related reports relationship
+            $lampiranPath = null;
+            if ($request->hasFile('lampiran')) {
+                $lampiranPath = $request->file('lampiran')->store('lampiran', 'public');
+            }
+            $fileCoverPath = null;
+            if ($request->hasFile('file_cover')) {
+                $fileCoverPath = $request->file('file_cover')->store('covers', 'public');
+            }
+
+            $report = Report::create([
+                'user_id' => Auth::id(),
+                'tipe_dokumen' => $request->tipe_dokumen,
+                'kategori_produk_hukum' => $request->kategori_produk_hukum,
+                'bidang_hukum' => $request->bidang_hukum,
+                'opd' => $request->opd,
+                'jenis_peradilan' => $request->jenis_peradilan,
+                'nomor' => $request->nomor,
+                'pengarang' => $request->pengarang,
+                'tanggal_penetapan' => $request->tanggal_penetapan,
+                'tanggal_pengundangan' => $request->tanggal_pengundangan,
+                'tahun' => $request->tahun,
+                'judul' => $request->judul,
+                'tags' => $request->tags,
+                'keyword' => $request->keyword,
+                'abstrak' => $abstrakPath,
+                'tempat_terbit' => $request->tempat_terbit,
+                'penerbit' => $request->penerbit,
+                'sumber' => $request->sumber ?: Auth::user()->name,
+                'pemrakarsa' => $request->pemrakarsa,
+                'penandatangan' => $request->penandatangan,
+                'teu' => $request->teu,
+                'isbn' => $request->isbn,
+                'no_panggil' => $request->no_panggil,
+                'no_induk_buku' => $request->no_induk_buku,
+                'lokasi' => $request->lokasi ?: Auth::user()->name,
+                'deskripsi_fisik' => $request->deskripsi_fisik,
+                'hasil_uji_materi' => $request->hasil_uji_materi,
+                'keterangan_status' => $request->keterangan_status ?: 'Menunggu Persetujuan',
+                'author' => $request->author,
+                'pdf' => $pdfPath,
+                'lampiran' => $lampiranPath,
+                'status' => $request->status ?: 'Menunggu',
+                'bahasa' => $request->bahasa,
+                'klasifikasi' => $request->klasifikasi,
+                'file_cover' => $fileCoverPath,
+                'jenis' => $request->kategori_produk_hukum ?: 'Keputusan Kepala OPD',
+                'label' => ($request->kategori_produk_hukum ?: 'Dokumen') . ' Nomor ' . $request->nomor . ' Tahun ' . $request->tahun,
+            ]);
+            
+            // Handle related reports
+            if ($request->has('related_reports') && !empty($request->related_reports)) {
+                $relatedReportIds = explode(',', $request->related_reports);
+                $relatedReportIds = array_filter(array_map('intval', $relatedReportIds));
+                
+                if (!empty($relatedReportIds)) {
+                    $report->relatedReports()->attach($relatedReportIds);
+                }
+            }
+            
+            Log::info('Report created successfully with ID:', ['id' => $report->id]);
+            return redirect()->route('dashboard')->with('success', 'Dokumen berhasil diajukan dan menunggu persetujuan.');
+            
+        } catch (\Exception $e) {
+            Log::error('Error creating report:', ['error' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
+            return redirect()->back()->withErrors(['error' => 'Terjadi kesalahan saat menyimpan dokumen: ' . $e->getMessage()])->withInput();
+        }
     }
 
 
@@ -77,9 +121,33 @@ class ReportController extends Controller
         return view('admin', compact('reports'));
     }
 
+    // Admin approved reports page
+    public function approvedReports()
+    {
+        $reports = Report::where('status', 'Berlaku')->get();
+        return view('admin.approved', compact('reports'));
+    }
+
+    // Admin OPD reports page with user filtering
+    public function opdReports()
+    {
+        $reports = Report::with('user')->where('status', 'Berlaku')->get();
+        $users = \App\Models\User::whereHas('reports', function($query) {
+            $query->where('status', 'Berlaku');
+        })->get();
+        return view('admin.opd', compact('reports', 'users'));
+    }
+
+    // Admin users list page (Daftar OPD)
+    public function usersList()
+    {
+        $users = \App\Models\User::where('role', '!=', 'admin')->get();
+        return view('admin.users', compact('users'));
+    }
+
     public function show($id)
     {
-        $report = Report::findOrFail($id);
+        $report = Report::with('relatedReports')->findOrFail($id);
         return view('reports.show', compact('report'));
     }
 
@@ -91,5 +159,29 @@ class ReportController extends Controller
         $report->keterangan_status = 'Berlaku';
         $report->save();
         return redirect()->route('admin.dashboard')->with('success', 'Dokumen berhasil disetujui.');
+    }
+
+    // Search reports for related documents
+    public function searchReports(Request $request)
+    {
+        $query = $request->get('query', '');
+        
+        if (strlen($query) < 2) {
+            return response()->json([]);
+        }
+
+        $reports = Report::where('status', 'Berlaku')
+            ->where(function($q) use ($query) {
+                $q->where('judul', 'like', '%' . $query . '%')
+                  ->orWhere('nomor', 'like', '%' . $query . '%')
+                  ->orWhere('tahun', 'like', '%' . $query . '%')
+                  ->orWhere('jenis', 'like', '%' . $query . '%')
+                  ->orWhere('tipe_dokumen', 'like', '%' . $query . '%');
+            })
+            ->select('id', 'judul', 'nomor', 'tahun', 'jenis', 'tipe_dokumen')
+            ->limit(10)
+            ->get();
+
+        return response()->json($reports);
     }
 }

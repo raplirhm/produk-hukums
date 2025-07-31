@@ -29,9 +29,22 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [ReportController::class, 'userDashboard'])->name('dashboard');
     Route::get('/tambah', [ReportController::class, 'create'])->name('report.create');
     Route::post('/tambah', [ReportController::class, 'store'])->name('report.store');
+    Route::get('/search-reports', [ReportController::class, 'searchReports'])->name('report.search');
+    
+    // DEBUG route to test form submission
+    Route::post('/test-form', function(\Illuminate\Http\Request $request) {
+        return response()->json([
+            'success' => true,
+            'data' => $request->all(),
+            'files' => $request->allFiles()
+        ]);
+    })->name('test.form');
 
     // ADMIN routes
     Route::get('/admin', [ReportController::class, 'adminDashboard'])->middleware(['auth', 'admin'])->name('admin.dashboard');
+    Route::get('/admin/approved', [ReportController::class, 'approvedReports'])->middleware(['auth', 'admin'])->name('admin.approved');
+    Route::get('/admin/opd', [ReportController::class, 'opdReports'])->middleware(['auth', 'admin'])->name('admin.opd');
+    Route::get('/admin/users', [ReportController::class, 'usersList'])->middleware(['auth', 'admin'])->name('admin.users');
     Route::post('/approve/{id}', [ReportController::class, 'approve'])->middleware(['auth', 'admin'])->name('report.approve');
 });
 
