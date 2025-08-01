@@ -35,6 +35,24 @@
                 border-color: #222;
             }
 
+            .abstrak-btn {
+                background: transparent;
+                color: #28a745;
+                border: 1.5px solid #28a745;
+                border-radius: 5px;
+                padding: 6px 18px;
+                font-size: 0.98rem;
+                cursor: pointer;
+                font-weight: 500;
+                transition: color 0.2s, border-color 0.2s;
+                margin-left: 8px;
+            }
+
+            .abstrak-btn:hover {
+                color: #155724;
+                border-color: #155724;
+            }
+
             #searchInput:focus {
                 border-color: #007bff;
                 box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
@@ -89,6 +107,9 @@
                             </a>
                         </strong>
                         <a class="dokumen-btn" href="{{ asset('storage/' . $report->pdf) }}" target="_blank">Dokumen</a>
+                        @if($report->abstrak && !empty(trim($report->abstrak)))
+                            <a class="abstrak-btn" href="{{ asset('storage/' . $report->abstrak) }}" target="_blank">Abstrak</a>
+                        @endif
                         <br>
                     </div>
                     <span>{{ $report->judul }}</span>
