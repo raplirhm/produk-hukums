@@ -125,8 +125,8 @@
                     <li><span class="label">Judul</span><span class="colon">:</span><span class="value">{{ $report->judul }}</span></li>
                     <li><span class="label">T.E.U</span><span class="colon">:</span><span class="value">{{ $report->teu }}</span></li>
                     <li><span class="label">Nomor</span><span class="colon">:</span><span class="value">{{ $report->nomor }}</span></li>
-                    <li><span class="label">Tahun Terbit</span><span class="colon">:</span><span class="value">{{ $report->tahun_terbit }}</span></li>
-                    <li><span class="label">Tempat Penetapan</span><span class="colon">:</span><span class="value">{{ $report->tempat_penetapan }}</span></li>
+                    <li><span class="label">Tahun Terbit</span><span class="colon">:</span><span class="value">{{ $report->tahun }}</span></li>
+                    <li><span class="label">Tempat Penetapan</span><span class="colon">:</span><span class="value">{{ $report->tempat_terbit }}</span></li>
                     <li><span class="label">Tanggal Penetapan</span><span class="colon">:</span><span class="value">{{ $report->tanggal_penetapan }}</span></li>
                     <li><span class="label">Tanggal Pengundangan</span><span class="colon">:</span><span class="value">{{ $report->tanggal_pengundangan }}</span></li>
                     <li><span class="label">Subjek</span><span class="colon">:</span><span class="value">{{ $report->subjek }}</span></li>
