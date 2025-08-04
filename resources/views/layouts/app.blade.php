@@ -116,6 +116,11 @@
                         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp"
                             style="height:24px; width:24px; vertical-align:middle; filter:invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);">
                     </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.jdih.jdih_jateng_mobile_android_v_101"
+                        target="_blank" style="color:#fff;">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googleplay.svg" alt="Google Play Store"
+                            style="height:24px; width:24px; vertical-align:middle; filter:invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);">
+                    </a>
                 </div>
             </div>
         </div>
