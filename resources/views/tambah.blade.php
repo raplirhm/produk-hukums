@@ -41,11 +41,103 @@
         </div>
         <div style="margin-bottom:14px;">
             <label for="bidanghukum" style="display:block; margin-bottom:6px;">Bidang Hukum</label>
-            <input name="bidang_hukum" placeholder="Bidang Hukum" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" required><br>
+            <select name="bidang_hukum" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" required>
+                <option value="">Pilih Bidang Hukum</option>
+                <option value="Hukum Pidana">Hukum Pidana</option>
+                <option value="Hukum Perdata">Hukum Perdata</option>
+                <option value="Pajak">Pajak</option>
+                <option value="Hukum Acara">Hukum Acara</option>
+                <option value="Hukum Adat">Hukum Adat</option>
+                <option value="Hukum Administrasi Negara">Hukum Administrasi Negara</option>
+                <option value="Hukum Agraria">Hukum Agraria</option>
+                <option value="Hukum Dagang">Hukum Dagang</option>
+                <option value="Hukum Internasional">Hukum Internasional</option>
+                <option value="Hukum Islam">Hukum Islam</option>
+                <option value="Sumber Daya Alam">Sumber Daya Alam</option>
+                <option value="Transportasi">Transportasi</option>
+                <option value="Hukum Lingkungan">Hukum Lingkungan</option>
+                <option value="Kesehatan">Kesehatan</option>
+                <option value="Keuangan Daerah">Keuangan Daerah</option>
+                <option value="Pemerintahan Daerah">Pemerintahan Daerah</option>
+                <option value="Kepegawaian">Kepegawaian</option>
+                <option value="Partai Politik">Partai Politik</option>
+                <option value="Anggaran Pendapatan dan Belanja Daerah">Anggaran Pendapatan dan Belanja Daerah</option>
+                <option value="Administrasi Kewilayahan">Administrasi Kewilayahan</option>
+                <option value="Tata Kelola Wilayah">Tata Kelola Wilayah</option>
+                <option value="Dana Bagi Hasil">Dana Bagi Hasil</option>
+                <option value="Standarisasi Biaya">Standarisasi Biaya</option>
+                <option value="Dewan Perwakilan Rakyat Daerah (DPRD)">Dewan Perwakilan Rakyat Daerah (DPRD)</option>
+                <option value="Perseroan Daerah">Perseroan Daerah</option>
+                <option value="Rencana Aksi Daerah">Rencana Aksi Daerah</option>
+                <option value="Bencana Alam">Bencana Alam</option>
+                <option value="perhubungan">perhubungan</option>
+                <option value="Peternakan">Peternakan</option>
+                <option value="Pertanian">Pertanian</option>
+                <option value="Perindustrian">Perindustrian</option>
+                <option value="Ketenagakerjaan">Ketenagakerjaan</option>
+                <option value="Pendidikan">Pendidikan</option>
+                <option value="Perikanan">Perikanan</option>
+                <option value="Pertambangan">Pertambangan</option>
+                <option value="Pelayanan Publik">Pelayanan Publik</option>
+                <option value="Retribusi">Retribusi</option>
+                <option value="DESA">DESA</option>
+                <option value="JASA USAHA">JASA USAHA</option>
+                <option value="Barang Milik Daerah">Barang Milik Daerah</option>
+                <option value="Pariwisata">Pariwisata</option>
+                <option value="Hak Asasi Manusia">Hak Asasi Manusia</option>
+                <option value="Koperasi">Koperasi</option>
+                <option value="Kesehatan Hewan">Kesehatan Hewan</option>
+                <option value="PERDAGANGAN">PERDAGANGAN</option>
+                <option value="Penyiaran">Penyiaran</option>
+                <option value="Perkebunan">Perkebunan</option>
+                <option value="USAHA MIKRO, KECIL, DAN MENENGAH">USAHA MIKRO, KECIL, DAN MENENGAH</option>
+                <option value="Kependudukan">Kependudukan</option>
+                <option value="Pengadaan Barang dan Jasa">Pengadaan Barang dan Jasa</option>
+                <option value="Kearsipan">Kearsipan</option>
+            </select><br>
         </div>
         <div style="margin-bottom:14px;">
             <label for="opd" style="display:block; margin-bottom:6px;">OPD</label>
-            <input name="opd" placeholder="OPD" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"><br>
+            <select name="opd" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;">
+                <option value="">Pilih OPD</option>
+                <option value="Badan Pengelola Keuangan Dan Aset Daerah Provinsi Jawa Tengah">Badan Pengelola Keuangan Dan Aset Daerah Provinsi Jawa Tengah</option>
+                <option value="Dinas Pendidikan Dan Kebudayaan Provinsi Jawa Tengah">Dinas Pendidikan Dan Kebudayaan Provinsi Jawa Tengah</option>
+                <option value="Dinas Kepemudaan, Olah Raga Dan Pariwisata Provinsi Jawa Tengah">Dinas Kepemudaan, Olah Raga Dan Pariwisata Provinsi Jawa Tengah</option>
+                <option value="Dinas Kearsipan Dan Perpustakaan Provinsi Jawa Tengah">Dinas Kearsipan Dan Perpustakaan Provinsi Jawa Tengah</option>
+                <option value="Dinas Kesehatan Provinsi Jawa Tengah">Dinas Kesehatan Provinsi Jawa Tengah</option>
+                <option value="Biro Infrastruktur dan Sumber Daya Alam SETDA Provinsi Jawa Tengah">Biro Infrastruktur dan Sumber Daya Alam SETDA Provinsi Jawa Tengah</option>
+                <option value="Dinas Perumahan Rakyat Dan Kawasan Permukiman Provinsi Jawa Tengah">Dinas Perumahan Rakyat Dan Kawasan Permukiman Provinsi Jawa Tengah</option>
+                <option value="Dinas Pekerjaan Umum Bina Marga Dan Ciptakarya Provinsi Jawa Tengah">Dinas Pekerjaan Umum Bina Marga Dan Ciptakarya Provinsi Jawa Tengah</option>
+                <option value="Dinas Pekerjaan Umum Sumber Daya Air Dan Penataan Ruang Provinsi Jawa Tengah">Dinas Pekerjaan Umum Sumber Daya Air Dan Penataan Ruang Provinsi Jawa Tengah</option>
+                <option value="Biro Pemerintahan, Otonomi Daerah dan Kerjasama SETDA Provinsi Jawa Tengah">Biro Pemerintahan, Otonomi Daerah dan Kerjasama SETDA Provinsi Jawa Tengah</option>
+                <option value="Inspektur Provinsi Jawa Tengah">Inspektur Provinsi Jawa Tengah</option>
+                <option value="Dinas Pemberdayaan Masyarakat, Desa, Kependudukan Dan Pencatatan Sipil Provinsi Jawa Tengah">Dinas Pemberdayaan Masyarakat, Desa, Kependudukan Dan Pencatatan Sipil Provinsi Jawa Tengah</option>
+                <option value="Badan Penanggulangan Bencana Daerah Provinsi Jawa Tengah">Badan Penanggulangan Bencana Daerah Provinsi Jawa Tengah</option>
+                <option value="Dinas Energi Dan Sumber Mineral Provinsi Jawa Tengah">Dinas Energi Dan Sumber Mineral Provinsi Jawa Tengah</option>
+                <option value="Dinas Lingkungan Hidup Dan Kehutanan Provinsi Jawa Tengah">Dinas Lingkungan Hidup Dan Kehutanan Provinsi Jawa Tengah</option>
+                <option value="Badan Pengelola Pendapatan Daerah Provinsi Jawa Tengah">Badan Pengelola Pendapatan Daerah Provinsi Jawa Tengah</option>
+                <option value="Dinas Penanaman Modal Dan Pelayanan Terpadu Provinsi Jawa Tengah">Dinas Penanaman Modal Dan Pelayanan Terpadu Provinsi Jawa Tengah</option>
+                <option value="Biro Perekonomian SETDA Provinsi Jawa Tengah">Biro Perekonomian SETDA Provinsi Jawa Tengah</option>
+                <option value="Dinas Koperasi, Usaha Kecil, Dan Menengah Provinsi Jawa Tengah">Dinas Koperasi, Usaha Kecil, Dan Menengah Provinsi Jawa Tengah</option>
+                <option value="Dinas Sosial Provinsi Jawa Tengah">Dinas Sosial Provinsi Jawa Tengah</option>
+                <option value="Biro Kesejahteraan Rakyat SETDA Provinsi Jawa Tengah">Biro Kesejahteraan Rakyat SETDA Provinsi Jawa Tengah</option>
+                <option value="Badan Kesatuan Bangsa, Politik dan Perlindungan Masyarakat Provinsi Jawa Tengah">Badan Kesatuan Bangsa, Politik dan Perlindungan Masyarakat Provinsi Jawa Tengah</option>
+                <option value="Dinas Pemberdayaan Perempuan, Perlindungan Anak, Pengendalian Penduduk Dan Keluarga Berencana Provinsi Jawa Tengah">Dinas Pemberdayaan Perempuan, Perlindungan Anak, Pengendalian Penduduk Dan Keluarga Berencana Provinsi Jawa Tengah</option>
+                <option value="Badan Pengembangan Sumber Daya Manusia Daerah Provinsi Jawa Tengah">Badan Pengembangan Sumber Daya Manusia Daerah Provinsi Jawa Tengah</option>
+                <option value="Badan Kepegawaian Daerah Provinsi Jawa Tengah">Badan Kepegawaian Daerah Provinsi Jawa Tengah</option>
+                <option value="Dinas Tenaga Kerja Dan Transmigrasi Provinsi Jawa Tengah">Dinas Tenaga Kerja Dan Transmigrasi Provinsi Jawa Tengah</option>
+                <option value="Dinas Komunikasi Dan Informatika Provinsi Jawa Tengah">Dinas Komunikasi Dan Informatika Provinsi Jawa Tengah</option>
+                <option value="Sekretaris DPRD Provinsi Jawa Tengah">Sekretaris DPRD Provinsi Jawa Tengah</option>
+                <option value="Dinas Perindustrian Dan Perdagangan Provinsi Jawa Tengah">Dinas Perindustrian Dan Perdagangan Provinsi Jawa Tengah</option>
+                <option value="Dinas Kelautan Dan Perikanan Provinsi Jawa Tengah">Dinas Kelautan Dan Perikanan Provinsi Jawa Tengah</option>
+                <option value="RSJD Dr. Amino Gondohutomo Provinsi Jawa Tengah">RSJD Dr. Amino Gondohutomo Provinsi Jawa Tengah</option>
+                <option value="RSJD Dr. RM Soedjarwadi Provinsi Jawa Tengah">RSJD Dr. RM Soedjarwadi Provinsi Jawa Tengah</option>
+                <option value="RSJD Surakarta Provinsi Jawa Tengah">RSJD Surakarta Provinsi Jawa Tengah</option>
+                <option value="RSUD Dr. Moewardi Provinsi Jawa Tengah">RSUD Dr. Moewardi Provinsi Jawa Tengah</option>
+                <option value="RSUD Prof. Dr. Margono Soekarjo Provinsi Jawa Tengah">RSUD Prof. Dr. Margono Soekarjo Provinsi Jawa Tengah</option>
+                <option value="RSUD Kelet Provinsi Jawa Tengah">RSUD Kelet Provinsi Jawa Tengah</option>
+                <option value="RSUD Tugurejo Provinsi Jawa Tengah">RSUD Tugurejo Provinsi Jawa Tengah</option>
+            </select><br>
         </div>
         <div style="margin-bottom:14px;">
             <label for="jenisperadilan" style="display:block; margin-bottom:6px;">Jenis Peradilan</label>
