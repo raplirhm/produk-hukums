@@ -34,7 +34,7 @@ class ReportController extends Controller
                 'tipe_dokumen' => 'required',
                 'kategori_produk_hukum' => 'required',
                 'bidang_hukum' => 'required',
-                'judul' => 'required',
+                'tentang' => 'required',
                 'pdf' => 'required|mimes:pdf|max:20480',
             ]);
 
@@ -66,7 +66,7 @@ class ReportController extends Controller
                 'tanggal_penetapan' => $request->tanggal_penetapan,
                 'tanggal_pengundangan' => $request->tanggal_pengundangan,
                 'tahun' => $request->tahun,
-                'judul' => $request->judul,
+                'tentang' => $request->tentang,
                 'tags' => $request->tags,
                 'keyword' => $request->keyword,
                 'abstrak' => $abstrakPath,
@@ -172,13 +172,13 @@ class ReportController extends Controller
 
         $reports = Report::where('status', 'Berlaku')
             ->where(function($q) use ($query) {
-                $q->where('judul', 'like', '%' . $query . '%')
+                $q->where('tentang', 'like', '%' . $query . '%')
                   ->orWhere('nomor', 'like', '%' . $query . '%')
                   ->orWhere('tahun', 'like', '%' . $query . '%')
                   ->orWhere('jenis', 'like', '%' . $query . '%')
                   ->orWhere('tipe_dokumen', 'like', '%' . $query . '%');
             })
-            ->select('id', 'judul', 'nomor', 'tahun', 'jenis', 'tipe_dokumen')
+            ->select('id', 'tentang', 'nomor', 'tahun', 'jenis', 'tipe_dokumen')
             ->limit(10)
             ->get();
 

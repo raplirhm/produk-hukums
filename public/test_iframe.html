@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF Iframe Test</title>
+</head>
+<body>
+    <h1>PDF Iframe Test</h1>
+    
+    <h2>Test 1: Direct PDF Link</h2>
+    <p><a href="http://127.0.0.1:8000/storage/pdfs/MQcXA7uvOaFHTjyUxJi8jwBPnrDQqa6fs0R7BF50.pdf" target="_blank">Click here to open PDF directly</a></p>
+    
+    <h2>Test 2: PDF in Iframe</h2>
+    <iframe src="http://127.0.0.1:8000/storage/pdfs/MQcXA7uvOaFHTjyUxJi8jwBPnrDQqa6fs0R7BF50.pdf" width="75%" height="500px" style="border: 1px solid #ccc;"></iframe>
+    
+    <h2>Test 3: PDF with zoom parameter</h2>
+    <iframe src="http://127.0.0.1:8000/storage/pdfs/MQcXA7uvOaFHTjyUxJi8jwBPnrDQqa6fs0R7BF50.pdf#zoom=50" width="75%" height="500px" style="border: 1px solid #ccc;"></iframe>
+    
+    <script>
+        // Test if iframe loads successfully
+        window.addEventListener('DOMContentLoaded', function() {
+            const iframes = document.querySelectorAll('iframe');
+            
+            iframes.forEach((iframe, index) => {
+                iframe.addEventListener('load', function() {
+                    console.log('Iframe ' + (index + 1) + ' loaded successfully');
+                });
+                
+                iframe.addEventListener('error', function() {
+                    console.log('Iframe ' + (index + 1) + ' failed to load');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

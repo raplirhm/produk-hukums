@@ -21,7 +21,7 @@ class Report extends Model
         'tanggal_penetapan',
         'tanggal_pengundangan',
         'tahun',
-        'judul',
+        'tentang',
         'tags',
         'keyword',
         'abstrak',

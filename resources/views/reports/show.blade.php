@@ -109,7 +109,6 @@
         <div style="display: flex;">
             <div style="flex: 1;">
                 <h1 style="font-size: 24px; font-weight: bold;">{{ $report->label }}</h1>
-                <span class="value">{{ $report->judul }}</span>
                 <hr style="margin-top: 16px; margin-bottom:18px; height:1px; border:none; background-color:grey; width: 98%">
                 <!-- Tombol Toggle -->
                 <div>
@@ -122,7 +121,7 @@
                 <ul id="detail-section" style="list-style: none; padding: 0;">
                     <li style="margin-top: 32px;"><span class="label">Tipe Dokumen</span><span class="colon">:</span><span class="value">{{ $report->tipe_dokumen }}</span></li>
                     <li><span class="label">Jenis</span><span class="colon">:</span><span class="value">{{ $report->jenis }}</span></li>
-                    <li><span class="label">Judul</span><span class="colon">:</span><span class="value">{{ $report->judul }}</span></li>
+                    <li><span class="label">Tentang</span><span class="colon">:</span><span class="value">{{ $report->tentang }}</span></li>
                     <li><span class="label">T.E.U</span><span class="colon">:</span><span class="value">{{ $report->teu }}</span></li>
                     <li><span class="label">Nomor</span><span class="colon">:</span><span class="value">{{ $report->nomor }}</span></li>
                     <li><span class="label">Tahun Terbit</span><span class="colon">:</span><span class="value">{{ $report->tahun }}</span></li>
@@ -146,7 +145,7 @@
                             @foreach($report->relatedReports as $relatedReport)
                                 <div style="margin-bottom: 5px;">
                                     <a href="{{ route('report.show', $relatedReport->id) }}" style="color: #007bff; text-decoration: none;">
-                                        {{ $relatedReport->judul }}
+                                        {{ $relatedReport->label }}
                                     </a>
                                     <span style="color: #666; font-size: 0.9em;">
                                         ({{ $relatedReport->tipe_dokumen }} - {{ $relatedReport->nomor ?: 'N/A' }})
@@ -206,7 +205,6 @@
                                 @endif
                                 <br>
                             </div>
-                            <span>{{ $relatedReport->judul }}</span>
                             <div style="margin-top: 8px; font-size: 0.9em; color: #666;">
                                 <span>{{ $relatedReport->tipe_dokumen }}</span>
                                 @if($relatedReport->nomor)

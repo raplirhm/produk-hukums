@@ -146,7 +146,7 @@
                         @endif
                         <br>
                     </div>
-                    <span>{{ $report->judul }}</span>
+                    <span>{{ $report->tentang }}</span>
                 </div>
 
                 <a href="{{ route('report.show', $report->id) }}" style="position:absolute; right:18px; top:50%; transform:translateY(-50%); background:transparent; border:none; padding:0; margin:0; display:flex; align-items:center; cursor:pointer;" aria-label="Lihat detail">

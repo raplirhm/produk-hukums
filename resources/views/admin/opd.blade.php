@@ -257,7 +257,7 @@
                         <a class="dokumen-btn" href="{{ asset('storage/' . $report->pdf) }}" target="_blank">Dokumen</a>
                         <br>
                     </div>
-                    <span>{{ $report->judul }}</span>
+                    <span>{{ $report->tentang }}</span>
                     <div class="user-info">
                         Dibuat oleh: {{ $report->user->name ?? 'Unknown' }}
                     </div>

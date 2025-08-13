@@ -164,8 +164,8 @@
             <input name="tahun" placeholder="Tahun" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"><br>
         </div>
         <div style="margin-bottom:14px;">
-            <label for="judul" style="display:block; margin-bottom:6px;">Judul</label>
-            <input name="judul" placeholder="Judul" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" required><br>
+            <label for="tentang" style="display:block; margin-bottom:6px;">Tentang</label>
+            <textarea name="tentang" placeholder="Tentang dokumen ini..." style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; min-height:80px;" required></textarea><br>
         </div>
         <div style="margin-bottom:14px;">
             <label for="tags" style="display:block; margin-bottom:6px;">Tags</label>
@@ -252,11 +252,11 @@
         </div>
         <div style="margin-bottom:14px;">
             <label for="status" style="display:block; margin-bottom:6px;">Status</label>
-            <input name="status" placeholder="Status" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"><br>
+            <input name="status" placeholder="Status" value="Menunggu" readonly style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; background-color:#f5f5f5; cursor:not-allowed;"><br>
         </div>
         <div style="margin-bottom:14px;">
             <label for="bahasa" style="display:block; margin-bottom:6px;">Bahasa</label>
-            <input name="bahasa" placeholder="Bahasa" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"><br>
+            <input name="bahasa" placeholder="Bahasa" value="Bahasa Indonesia" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"><br>
         </div>
         <div style="margin-bottom:14px;">
             <label for="klasifikasi" style="display:block; margin-bottom:6px;">Klasifikasi</label>
@@ -380,7 +380,7 @@
                             const resultItem = document.createElement('div');
                             resultItem.style.cssText = 'padding:10px; border-bottom:1px solid #eee; cursor:pointer; hover:background-color:#f5f5f5;';
                             resultItem.innerHTML = `
-                                <div style="font-weight:bold;">${report.judul}</div>
+                                <div style="font-weight:bold;">${report.tentang}</div>
                                 <div style="font-size:0.9em; color:#666;">
                                     ${report.tipe_dokumen} - ${report.jenis} | Nomor: ${report.nomor || 'N/A'} | Tahun: ${report.tahun || 'N/A'}
                                 </div>
@@ -414,7 +414,7 @@
                 const reportTag = document.createElement('div');
                 reportTag.style.cssText = 'display:inline-block; background:#007bff; color:white; padding:5px 10px; margin:2px; border-radius:15px; font-size:0.9em;';
                 reportTag.innerHTML = `
-                    ${report.judul} (${report.nomor || 'N/A'})
+                    ${report.tentang} (${report.nomor || 'N/A'})
                     <span style="margin-left:8px; cursor:pointer; font-weight:bold;" onclick="removeSelectedReport(${report.id}, this.parentElement)">&times;</span>
                 `;
                 

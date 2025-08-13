@@ -112,7 +112,7 @@
                         @endif
                         <br>
                     </div>
-                    <span>{{ $report->judul }}</span>
+                    <span>{{ $report->tentang }}</span>
 
                 </div>
 
